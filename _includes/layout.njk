@@ -1,0 +1,26 @@
+---
+title: My Rad Blog
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <!-- <p><small style="color: red;">this is using the layout template</small></p> -->
+    {% set navPages = collections.all | eleventyNavigation %}
+    <ul>
+    {%- for entry in navPages %}
+      <li{% if entry.url == page.url %} class="my-active-class"{% endif %}>
+        <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+      </li>
+    {%- endfor %}
+    </ul>
+    <main>
+        {{ content | safe }}
+    </main>
+  </body>
+</html>

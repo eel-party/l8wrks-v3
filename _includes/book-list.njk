@@ -1,0 +1,25 @@
+---
+layout: layout
+pagination:
+  data: collections.book
+  size: 10
+  reverse: true
+  alias: books
+---
+
+<p><small style="color: red;">this is using the book-list template</small></p>
+
+
+{{ content | safe }}
+
+{% for book in books %}
+  <article>
+    <h1>
+      <a href="{{ book.url | url }}">{{ book.data.title }}</a>
+    </h1>
+    <p>{{ book.date }}</p>
+    <p>Parent: {{ book.data.eleventyNavigation.parent }}</p>
+    <p>Key: {{ book.data.eleventyNavigation.key }}</p>
+    <p>{{ page.url }}</p>
+  </article>
+{% endfor %}

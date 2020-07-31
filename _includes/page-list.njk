@@ -1,0 +1,25 @@
+---
+layout: layout
+pagination:
+  data: collections.page
+  size: 10
+  reverse: true
+  alias: pages
+---
+
+<p><small style="color: red;">this is using the page-list template</small></p>
+
+
+{{ content | safe }}
+
+{% for page in pages %}
+  <!-- not working, currently showing nothing -->
+  
+    <article>
+      <h1>
+        <a href="{{ page.url | url }}">{{ page.data.title }}</a>
+      </h1>
+      <p>Parent ID: {{ page.data.parentID }}</p>
+      <p>{{ page.url }}</p>
+    </article>
+{% endfor %}

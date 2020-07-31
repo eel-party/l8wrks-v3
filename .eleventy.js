@@ -1,11 +1,18 @@
 const fs = require("fs");
 
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+
+// configure date stuff
+
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
   // Input directory: src
   // Output directory: _site
 
-  // The following copies to `_site/assets`
+  // The following copies to `_site/assets` and `_site/bookshelf`
   eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("bookshelf");
   // remember to add passthrough for css once we have some
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {

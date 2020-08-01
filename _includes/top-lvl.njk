@@ -16,7 +16,7 @@ pagination:
     <h1>
       <a href="{{ book.url | url }}">{{ book.data.title }}</a>
     </h1>
-    <!-- fix date format -->
-    <p>{{ book.date }}</p>
+    <time datetime="{{ book.date | dateIso }}">{{ book.date | dateReadable }}</time>
+
   </article>
 {% endfor %}

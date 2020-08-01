@@ -2,7 +2,10 @@ const fs = require("fs");
 
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
-// configure date stuff
+// require moment.js 
+const moment = require('moment');
+ 
+moment.locale('en');
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -29,5 +32,14 @@ module.exports = function(eleventyConfig) {
         });
       }
     }
+  });
+
+  // configure date stuff
+  eleventyConfig.addFilter('dateIso', date => {
+    return moment(date).toISOString();
+  });
+ 
+  eleventyConfig.addFilter('dateReadable', date => {
+    return moment(date).utc().format('MMMM, YYYY'); // E.g. May 31, 2019
   });
 };

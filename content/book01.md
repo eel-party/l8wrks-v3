@@ -1,6 +1,7 @@
 ---
 layout: secnd-lvl
 title: a book 01
+date: 2020-03-10
 tags: ['book']
 parent: bookshelf
 permalink: "bookshelf/{{ title | slug }}/"

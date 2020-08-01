@@ -7,19 +7,18 @@ pagination:
   alias: pages
 ---
 
-<p><small style="color: red;">this is using the page-list template</small></p>
-
+<p><small style="color: red;">this is using the secnd-lvl template</small></p>
 
 {{ content | safe }}
 
 {% for page in pages %}
-  <!-- not working, currently showing nothing -->
-  
+  <!-- compapare the page's parentID to the book's key -->
+  {% if page.data.parent == eleventyNavigation.key %}
     <article>
       <h1>
         <a href="{{ page.url | url }}">{{ page.data.title }}</a>
       </h1>
-      <p>Parent ID: {{ page.data.parentID }}</p>
-      <p>{{ page.url }}</p>
+
     </article>
+  {% endif %}
 {% endfor %}

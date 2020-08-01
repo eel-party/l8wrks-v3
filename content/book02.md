@@ -1,10 +1,9 @@
 ---
-layout: page-list
-title: a book 01
+layout: secnd-lvl
+title: a book 02
 tags: ['book']
-eleventyNavigation: 
-    key: book01
-    parent: bookshelf
+parent: bookshelf
+permalink: "bookshelf/{{ title | slug }}/"
 ---
 # {{ title }}
 

@@ -3,8 +3,9 @@ layout: page-list
 title: a book 02
 tags: ['book']
 eleventyNavigation: 
-    key: book02
+    key: a-book-02
     parent: bookshelf
+permalink: "bookshelf/{{ title | slug }}/"
 ---
 # {{ title }}
 

@@ -1,5 +1,5 @@
 ---
-title: My Rad Blog
+title: l∞wrks
 ---
 
 <!doctype html>
@@ -10,7 +10,8 @@ title: My Rad Blog
     <title>{{ title }}</title>
   </head>
   <body>
-    <!-- <p><small style="color: red;">this is using the layout template</small></p> -->
+    <p><small style="color: red;">this is using the layout template</small></p>
+
     {% set navPages = collections.all | eleventyNavigation %}
     <ul>
     {%- for entry in navPages %}

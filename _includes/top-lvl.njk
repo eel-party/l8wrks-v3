@@ -9,7 +9,6 @@ pagination:
 
 <p><small style="color: red;">this is using the book-list template</small></p>
 
-
 {{ content | safe }}
 
 {% for book in books %}
@@ -17,9 +16,7 @@ pagination:
     <h1>
       <a href="{{ book.url | url }}">{{ book.data.title }}</a>
     </h1>
+    <!-- fix date format -->
     <p>{{ book.date }}</p>
-    <p>Parent: {{ book.data.eleventyNavigation.parent }}</p>
-    <p>Key: {{ book.data.eleventyNavigation.key }}</p>
-    <p>{{ page.url }}</p>
   </article>
 {% endfor %}

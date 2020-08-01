@@ -1,5 +1,5 @@
 ---
-layout: book-list
+layout: top-lvl
 title: bookshelf
 eleventyNavigation: 
     key: bookshelf

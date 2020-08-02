@@ -10,13 +10,21 @@ moment.locale('en');
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+  // set layout aliases
+  eleventyConfig.addLayoutAlias("book", "secnd-lvl.njk");
+
+  // this isn;t working
+  // eleventyConfig.addLayoutAlias("page", "sub-layout.njk");
+
   // Input directory: src
   // Output directory: _site
 
-  // The following copies to `_site/assets` and `_site/bookshelf`
+  // The following copies to `_site/assets` and `_site/content`
   eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("bookshelf");
+  eleventyConfig.addPassthroughCopy("content");
   // remember to add passthrough for css once we have some
+
+  // handle 404 page
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, bs) {
@@ -42,4 +50,45 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('dateReadable', date => {
     return moment(date).utc().format('MMMM, YYYY'); // E.g. May 31, 2019
   });
+
+  // Get the first `n` elements of a collection.
+  eleventyConfig.addFilter("head", (array, n) => {
+    if( n < 0 ) {
+      return array.slice(n);
+    }
+
+    return array.slice(0, n);
+  });
+
+  eleventyConfig.addCollection("tagList", function(collection) {
+    let tagSet = new Set();
+    collection.getAll().forEach(function(item) {
+      if( "tags" in item.data ) {
+        let tags = item.data.tags;
+
+        tags = tags.filter(function(item) {
+          switch(item) {
+            // this list should match the `filter` list in tags.njk
+            case "all":
+            case "nav":
+            case "page":
+            case "pages":
+            case "book":
+            case "books":
+              return false;
+          }
+
+          return true;
+        });
+
+        for (const tag of tags) {
+          tagSet.add(tag);
+        }
+      }
+    });
+
+    // returning an array in addCollection works in Eleventy 0.5.3
+    return [...tagSet];
+  });
+
 };

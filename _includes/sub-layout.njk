@@ -10,5 +10,13 @@ layout: layout
 
 {% for tag in collections.tagList %}
   {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+  <a href="{{ tagUrl | url }}" class="page-tag">{{ tag }}</a>
 {% endfor %}
+
+<!-- unclear on why this works with collections.page NOT collections.pages? -->
+<ul>
+  {%- set nextPost = collections.page | getNextCollectionItem(page) %}
+  {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+  {%- set previousPost = collections.page | getPreviousCollectionItem(page) %}
+  {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
+</ul>

@@ -8,11 +8,18 @@ layout: layout
 
 <h3>Tagged:</h3>
 
-{% for tag in collections.tagList %}
-  {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-  <a href="{{ tagUrl | url }}" class="page-tag">{{ tag }}</a>
-{% endfor %}
+<ul>
+  {% for tag in collections.tagList %}
+    <li> {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="page-tag">{{ tag }}</a>
+    </li>
+  
+  {% endfor %}
+  
+</ul>
 
+<h3>Pagination:</h3>
+<p>this needs to be updated to get only the pages in this book</p>
 <!-- unclear on why this works with collections.page NOT collections.pages? -->
 <ul>
   {%- set nextPost = collections.page | getNextCollectionItem(page) %}
@@ -20,3 +27,6 @@ layout: layout
   {%- set previousPost = collections.page | getPreviousCollectionItem(page) %}
   {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
 </ul>
+
+<h3><-- Back</h3>
+<p>(this doesn't work yet)</p>

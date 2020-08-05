@@ -10,11 +10,13 @@ moment.locale('en');
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+
+  // aliases arent working
   // set layout aliases
-  eleventyConfig.addLayoutAlias("book", "secnd-lvl.njk");
+  // eleventyConfig.addLayoutAlias("book", "secnd-lvl.njk");
 
   // this isn;t working
-  // eleventyConfig.addLayoutAlias("page", "sub-layout.njk");
+  // eleventyConfig.addLayoutAlias("page", "layout.njk");
 
   // Input directory: src
   // Output directory: _site

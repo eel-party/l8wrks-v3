@@ -1,5 +1,6 @@
 ---
 title: a book 02
+layout: secnd-lvl
 date: 2020-07-31
 tags: 
     - book

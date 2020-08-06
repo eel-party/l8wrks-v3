@@ -1,14 +1,22 @@
 <ol reversed class="pagelist" style="counter-reset: start-from {{ (pageslistCounter or pageslist.length) + 1 }}">
+
 {% for page in pageslist | reverse %}
+
   <li class="pagelist-item{% if page.url == url %} pagelist-item-active{% endif %}">
+
     <a href="{{ page.url | url }}" class="pagelist-link">{% if page.data.title %}{{ page.data.title }}{% else %}<code>{{ page.url }}</code>{% endif %}</a>
+
     <time class="pagelist-date" datetime="{{ page.date | dateIso }}">{{ page.date | dateReadable }}</time>
+
     {% for tag in page.data.tags %}
       {%- if collections.tagList.indexOf(tag) != -1 -%}
       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
       <a href="{{ tagUrl | url }}" class="page-tag">{{ tag }}</a>
       {%- endif -%}
     {% endfor %}
+
   </li>
+  
 {% endfor %}
+
 </ol>

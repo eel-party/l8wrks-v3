@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: My Rad Markdown Blog Post
+title: about
 eleventyNavigation: 
     key: about
 ---
@@ -12,3 +12,5 @@ San Francisco nodality semiotics ablative BASE jump skyscraper office carbon mod
 
 - https://www.a11yproject.com/
 - https://momentjs.com/
+- https://protonmail.com/
+- need to leave google photos etc.

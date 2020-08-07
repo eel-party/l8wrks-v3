@@ -16,7 +16,8 @@ pagination:
     <h1>
       <a href="{{ book.url | url }}">{{ book.data.title }}</a>
     </h1>
-    <time datetime="{{ book.date | dateIso }}">{{ book.date | dateReadable }}</time>
+    <p><time datetime="{{ book.date | dateIso }}">{{ book.date | dateReadable }}</time></p>
+    <img src="/assets/{{ book.data.image }}" alt="{{ book.data.description }}" class="img" width="200"/>
 
   </article>
 {% endfor %}

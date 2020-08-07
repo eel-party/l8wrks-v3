@@ -4,7 +4,8 @@ layout: secnd-lvl
 date: 2020-03-10
 tags: 
     - book
-image: something.jpg
+image: IMG_20200201_0001.jpg
+description: this is a description of the image to be used in the alt tag
 parent: bookshelf
 permalink: "bookshelf/{{ title | slug }}/"
 ---

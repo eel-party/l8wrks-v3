@@ -18,9 +18,9 @@ pagination:
       <h1>
         <a href="{{ page.url | url }}">{{ page.data.title }}</a>
       </h1>
-      <img src="/assets/{{ image }}" alt="{{ title }}" class="img" width="200"/>
+      <img src="/assets/{{ page.data.image }}" alt="{{ page.data.description }}" class="img" width="200"/>
 
-      <p>{{ content | safe }}</p>
+      <!-- <p>{{ content | safe }}</p> -->
     </article>
   {% endif %}
 {% endfor %}

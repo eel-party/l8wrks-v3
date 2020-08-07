@@ -8,8 +8,10 @@ const moment = require('moment');
 moment.locale('en');
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+  eleventyConfig.setDataDeepMerge(true);
+
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   // aliases arent working
   // set layout aliases
@@ -18,13 +20,13 @@ module.exports = function(eleventyConfig) {
   // this isn;t working
   // eleventyConfig.addLayoutAlias("page", "layout.njk");
 
-  // Input directory: src
-  // Output directory: _site
-
   // The following copies to `_site/assets` and `_site/content`
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("content");
   // remember to add passthrough for css once we have some
+  eleventyConfig.setTemplateFormats([
+    "css"
+  ]);
 
   // handle 404 page
   eleventyConfig.setBrowserSyncConfig({

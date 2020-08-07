@@ -2,7 +2,6 @@
 layout: layout
 ---
 
-<p><small style="color: red;">this is using the sub-layout template</small></p>
 <article>
   <img src="/assets/{{ image }}" alt="{{ description }}" class="img" width="500"/>
 
@@ -11,7 +10,7 @@ layout: layout
 </article>
 
 
-<h3>Tagged:</h3>
+<h2>Tagged:</h2>
 
 <ul>
   {% for tag in tags %}
@@ -27,7 +26,7 @@ layout: layout
 
 <!-- create nextPost/previousPost, see if there is one, then see if it matches the parent category -->
 
-<h3>Pagination:</h3>
+<h2>Pagination:</h2>
 <ul>
     {% set nextPost = collections.item | getNextCollectionItem(page) %}
 
@@ -46,4 +45,4 @@ layout: layout
     {% endif %}
 </ul>
 
-<h3><a href="../{{ item.parent | url }}">&larr; Back</a></h3>
+<a href="../{{ item.parent | url }}">&larr; Back</a>

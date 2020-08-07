@@ -1,4 +1,5 @@
 ---
+title: tags
 pagination:
   data: collections
   size: 1
@@ -17,7 +18,7 @@ eleventyComputed:
   title: Tagged “{{ tag }}”
 permalink: /tags/{{ tag }}/
 ---
-<h1>Tagged "{{ tag }}"</h1>
+<!-- <h2>Tagged "{{ tag }}"</h2> -->
 
 {% set itemslist = collections[ tag ] %}
 {% include "itemslist.njk" %}

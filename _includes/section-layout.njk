@@ -7,7 +7,7 @@ pagination:
   alias: groups
 ---
 
-<p><small style="color: red;">this is using the top-lvl template</small></p>
+<!-- <p><small style="color: red;">this is using the top-lvl template</small></p> -->
 
 {{ content | safe }}
 
@@ -17,9 +17,9 @@ pagination:
   {% if group.data.parent == eleventyNavigation.key %}
 
   <article>
-    <h1>
+    <h2>
       <a href="{{ group.url | url }}">{{ group.data.title }}</a>
-    </h1>
+    </h2>
     <p><time datetime="{{ group.date | dateIso }}">{{ group.date | dateReadable }}</time></p>
     <img src="/assets/{{ group.data.image }}" alt="{{ group.data.description }}" class="img" width="200"/>
 

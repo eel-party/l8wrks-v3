@@ -7,17 +7,17 @@ pagination:
   alias: items
 ---
 
-<p><small style="color: red;">this is using the secnd-lvl template</small></p>
-
+<!-- <p><small style="color: red;">this is using the secnd-lvl template</small></p>
+ -->
 {{ content | safe }}
 
-{% for item in items %}
+{% for item in items | reverse %}
   <!-- compapare the item's parentID to the book's key -->
   {% if item.data.parent == eleventyNavigation.key %}
     <article>
-      <h1>
+      <h2>
         <a href="{{ item.url | url }}">{{ item.data.title }}</a>
-      </h1>
+      </h2>
       <img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="img" width="200"/>
 
       <!-- <p>{{ content | safe }}</p> -->

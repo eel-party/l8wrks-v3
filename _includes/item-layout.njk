@@ -15,10 +15,10 @@ layout: layout
 
 <ul>
   {% for tag in tags %}
-    {% if tag == "page" %}
+    {% if tag == "item" %}
     {% else %}
       <li> {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-        <a href="{{ tagUrl | url }}" class="page-tag">{{ tag }}</a>
+        <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
       </li>
     {% endif %}
   {% endfor %}
@@ -29,7 +29,7 @@ layout: layout
 
 <h3>Pagination:</h3>
 <ul>
-    {% set nextPost = collections.page | getNextCollectionItem(page) %}
+    {% set nextPost = collections.item | getNextCollectionItem(page) %}
 
     {% if nextPost %}
     {% if nextPost.data.parent == parent %}
@@ -37,7 +37,7 @@ layout: layout
     {% endif %}
 
 
-    {% set previousPost = collections.page | getPreviousCollectionItem(page) %}
+    {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
     
     {% if previousPost %}
     {% if previousPost.data.parent == parent %}
@@ -46,4 +46,4 @@ layout: layout
     {% endif %}
 </ul>
 
-<h3><a href="../{{ page.parent | url }}">&larr; Back</a></h3>
+<h3><a href="../{{ item.parent | url }}">&larr; Back</a></h3>

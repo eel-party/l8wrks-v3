@@ -6,10 +6,10 @@ pagination:
   filter:
     - all
     - nav
-    - page
-    - pages
-    - book
-    - books
+    - item
+    - items
+    - group
+    - groups
     - tagList
   addAllPagesToCollections: true
 layout: layout
@@ -19,7 +19,7 @@ permalink: /tags/{{ tag }}/
 ---
 <h1>Tagged "{{ tag }}"</h1>
 
-{% set pageslist = collections[ tag ] %}
-{% include "pageslist.njk" %}
+{% set itemslist = collections[ tag ] %}
+{% include "itemslist.njk" %}
 
 <p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>

@@ -2,31 +2,20 @@ const fs = require("fs");
 
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
+const htmlmin = require("html-minifier");
+
 // require moment.js 
 const moment = require('moment');
  
 moment.locale('en');
 
 module.exports = function(eleventyConfig) {
-
-  eleventyConfig.setDataDeepMerge(true);
-
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-
-  // aliases arent working
-  // set layout aliases
-  // eleventyConfig.addLayoutAlias("book", "secnd-lvl.njk");
-
-  // this isn;t working
-  // eleventyConfig.addLayoutAlias("page", "layout.njk");
 
   // The following copies to `_site/assets` and `_site/content`
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("content");
   // remember to add passthrough for css once we have some
-  eleventyConfig.setTemplateFormats([
-    "css"
-  ]);
 
   // handle 404 page
   eleventyConfig.setBrowserSyncConfig({
@@ -55,6 +44,34 @@ module.exports = function(eleventyConfig) {
     return moment(date).utc().format('MMMM, YYYY'); // E.g. May 31, 2019
   });
 
+  // congigure tailwind.css
+  eleventyConfig.setUseGitIgnore(false);
+ 
+  eleventyConfig.addWatchTarget("./_tmp/style.css");
+ 
+  eleventyConfig.addPassthroughCopy({ "./_tmp/style.css": "./style.css" });
+ 
+  eleventyConfig.addShortcode("version", function () {
+    return String(Date.now());
+  });
+ 
+  eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
+    if (
+      process.env.ELEVENTY_PRODUCTION &&
+      outputPath &&
+      outputPath.endsWith(".html")
+    ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+ 
+    return content;
+  });
+
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
     if( n < 0 ) {
@@ -75,8 +92,8 @@ module.exports = function(eleventyConfig) {
             // this list should match the `filter` list in tags.njk
             case "all":
             case "nav":
-            case "item":
-            case "items":
+            case "page":
+            case "pages":
             case "book":
             case "books":
               return false;

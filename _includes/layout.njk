@@ -15,10 +15,10 @@
 
     <nav>
         {% set navPages = collections.all | eleventyNavigation %}
-        <ul>
+        <ul class="flex">
             {%- for entry in navPages %}
-            <li {% if entry.url==page.url %} class="my-active-class" {% endif %}>
-                <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+            <li {% if entry.url==page.url %} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-6" {% endif %} class="mr-6">
+                <a href="{{ entry.url | url }}" class="text-blue-500 hover:text-blue-800">{{ entry.title }}</a>
             </li>
             {%- endfor %}
         </ul>

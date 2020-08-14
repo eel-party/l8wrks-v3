@@ -13,16 +13,16 @@ pagination:
 
 <!-- filter this for books/shows/paintings -->
 
-{% for group in groups %}
-  {% if group.data.parent == eleventyNavigation.key %}
-
-  <article>
-    <h2>
-      <a href="{{ group.url | url }}">{{ group.data.title }}</a>
-    </h2>
-    <p><time datetime="{{ group.date | dateIso }}">{{ group.date | dateReadable }}</time></p>
-    <img src="/assets/{{ group.data.image }}" alt="{{ group.data.description }}" class="img" width="200"/>
-
-  </article>
-  {% endif %}
-{% endfor %}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {% for group in groups %}
+    {% if group.data.parent == eleventyNavigation.key %}
+    <div>
+        <h2>
+            <a href="{{ group.url | url }}" class="link-title">{{ group.data.title }}</a>
+        </h2>
+        <p><time datetime="{{ group.date | dateIso }}">{{ group.date | dateReadable }}</time></p>
+        <img src="/assets/{{ group.data.image }}" alt="{{ group.data.description }}" class="img" width="200" />
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

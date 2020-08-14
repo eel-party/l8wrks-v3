@@ -11,16 +11,17 @@ pagination:
  -->
 {{ content | safe }}
 
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 {% for item in items | reverse %}
   <!-- compapare the item's parentID to the book's key -->
   {% if item.data.parent == eleventyNavigation.key %}
-    <article>
-      <h2>
-        <a href="{{ item.url | url }}">{{ item.data.title }}</a>
-      </h2>
-      <img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="img" width="200"/>
-
-      <!-- <p>{{ content | safe }}</p> -->
-    </article>
-  {% endif %}
+      <div>
+        <h2>
+          <a href="{{ item.url | url }}">{{ item.data.title }}</a>
+        </h2>
+        <img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="img" />
+      </div>
+  
+{% endif %}
 {% endfor %}
+</div>

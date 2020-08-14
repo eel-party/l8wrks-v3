@@ -6,12 +6,12 @@ module.exports = {
     },
   },
   theme: {
-    extend: {
-      colors: {
-        change: "black",
-      },
+    container: {
+        // padding: '8rem',
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

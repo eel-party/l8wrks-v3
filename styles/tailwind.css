@@ -4,6 +4,10 @@
     color: transparent;
 }
 
+.link-title {
+    @apply underline;
+}
+
 @tailwind components;
 
 @tailwind utilities;

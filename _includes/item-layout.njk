@@ -2,37 +2,39 @@
 layout: layout
 ---
 
-<article>
-  <img src="/assets/{{ image }}" alt="{{ description }}" class="img" width="500"/>
 
-  {{ content | safe }}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div>
+    <img src="/assets/{{ image }}" alt="{{ description }}" class="img" />
+  </div>
+  <div>{{ content | safe }}</div>
+</div>
 
-</article>
-
+<a href="../{{ item.parent | url }}">&larr; Back</a>
 
 <h2>Tagged:</h2>
 
-<ul>
+<div class="">
   {% for tag in tags %}
     {% if tag == "item" %}
     {% else %}
-      <li> {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <div class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"> {% set tagUrl %}/tags/{{ tag }}/{% endset %}
         <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
-      </li>
+      </div>
     {% endif %}
   {% endfor %}
   
-</ul>
+</div>
 
 <!-- create nextPost/previousPost, see if there is one, then see if it matches the parent category -->
 
 <h2>Pagination:</h2>
-<ul>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
     {% set nextPost = collections.item | getNextCollectionItem(page) %}
 
     {% if nextPost %}
     {% if nextPost.data.parent == parent %}
-    <li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+    <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></div>{% endif %}
     {% endif %}
 
 
@@ -40,9 +42,8 @@ layout: layout
     
     {% if previousPost %}
     {% if previousPost.data.parent == parent %}
-    <li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>
+    <div>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></div>
     {% endif %}
     {% endif %}
-</ul>
+</div>
 
-<a href="../{{ item.parent | url }}">&larr; Back</a>

@@ -1,10 +1,19 @@
 ---
 layout: layout
+title: all tags
 permalink: /tags/
 ---
-<h1>Tags</h1>
 
 {% for tag in collections.tagList %}
+{% if tag == "item" %}
+{% else %}
   {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-  <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
+    <div class="inline-flex mr-3">
+        <svg class="h-4 w-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" /></svg>
+        <!-- how to show number of items with tag? -->
+        <a href="{{ tagUrl | url }}" class="item-tag h-4">{{ tag }} - {{  }}</a>
+    </div>
+
+{% endif %}
 {% endfor %}

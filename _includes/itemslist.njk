@@ -1,28 +1,25 @@
 <ul reversed class="itemlist grid grid-cols-1 md:grid-cols-3 gap-4 pt-8" style="counter-reset: start-from {{ (itemslistCounter or itemslist.length) + 1 }}">
-
-{% for item in itemslist | reverse %}
-
-  <li class="pb-6 itemlist-item{% if item.url == url %} itemlist-item-active{% endif %}">
-
-    <h2>
-      <a href="{{ item.url | url }}" class="itemlist-link">{% if item.data.title %}{{ item.data.title }}{% else %}<code>{{ item.url }}</code>{% endif %}</a>
-    </h2>
-
-    <p>
-      <time class="itemlist-date" datetime="{{ item.date | dateIso }}">{{ item.date | dateReadable }}</time>
-    </p>
-
-    {% for tag in item.data.tags %}
-      {%- if collections.tagList.indexOf(tag) != -1 -%}
-      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-
-      <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
-      
-      {%- endif -%}
+    {% for item in itemslist | reverse %}
+    <li class="pb-6 itemlist-item{% if item.url == url %} itemlist-item-active{% endif %}">
+        <a href="{{ item.url | url }}" class="link-title"><img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="h-48 w-full object-cover object-center pb-4" /></a>
+        <h2>
+            <a href="{{ item.url | url }}" class="itemlist-link">{% if item.data.title %}{{ item.data.title }}{% else %}<code>{{ item.url }}</code>{% endif %}</a>
+        </h2>
+        <p>
+            <time class="itemlist-date" datetime="{{ item.date | dateIso }}">{{ item.date | dateReadable }}</time>
+        </p>
+        {% for tag in item.data.tags %}
+        {% if tag == "item" %}
+        {% elif collections.tagList.indexOf(tag) != -1 %}
+        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+        <div class="inline-flex mr-3">
+            <!-- unclear why colors do not seem to work - fill-current text-gray-500 - etc. -->
+            <svg class="h-4 w-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" /></svg>
+            <a href="{{ tagUrl | url }}" class="item-tag h-4">{{ tag }}</a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </li>
     {% endfor %}
-
-  </li>
-  
-{% endfor %}
-
 </ul>

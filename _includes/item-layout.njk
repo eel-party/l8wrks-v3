@@ -2,7 +2,6 @@
 layout: layout
 ---
 
-
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
     <!-- left side - image -->
     <div>
@@ -18,50 +17,33 @@ layout: layout
         </div>
     </div>
 </div>
-
-
-
 <div class="py-8">
-  <h2 class="pb-2">Tagged:</h2>
-  {% for tag in tags %}
+    <h2 class="pb-2">Tagged:</h2>
+    {% for tag in tags %}
     {% if tag == "item" %}
     {% else %}
-      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-      <div class="inline-flex mr-4">
-              
-
-        <!-- need to fix aligment of icon to text -->
-
-        <svg class="h-4 w-4 mr-1 align-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
-
-        <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
-
-        
-      </div>
-        
+    {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+    <div class="inline-flex mr-3">
+        <svg class="h-4 w-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" /></svg>
+        <a href="{{ tagUrl | url }}" class="item-tag h-4">{{ tag }}</a>
+    </div>
     {% endif %}
-  {% endfor %}
-  
+    {% endfor %}
 </div>
-
 <!-- create nextPost/previousPost, see if there is one, then see if it matches the parent category -->
-
 <!-- <h2>Pagination:</h2> -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-  {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
-    
+    {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
     {% if previousPost %}
     {% if previousPost.data.parent == parent %}
     <div>&larr; Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></div>
     {% endif %}
     {% endif %}
-
     {% set nextPost = collections.item | getNextCollectionItem(page) %}
-
     {% if nextPost %}
     {% if nextPost.data.parent == parent %}
     <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a> &rarr;</div>
     {% endif %}
     {% endif %}
 </div>
-

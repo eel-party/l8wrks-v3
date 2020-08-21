@@ -1,4 +1,5 @@
 module.exports = {
+  important: true,
   purge: {
     content: ["_site/**/*.html"],
     options: {
@@ -6,12 +7,14 @@ module.exports = {
     },
   },
   theme: {
-    container: {
-        // padding: '8rem',
-    },
+    colors: {
+      // indigo: '#5c6ac4',
+      // blue: '#007ace',
+      // red: '#de3618',
+    }
   },
   variants: {},
   plugins: [
-    require('@tailwindcss/typography'),
+    // require('@tailwindcss/typography'),
   ],
 };

@@ -1,5 +1,5 @@
 ---
-title: a book 01
+title: Black Canson, The 666 Cat Sticker
 layout: group-layout
 date: 2020-03-10
 tags: 

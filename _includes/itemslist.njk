@@ -1,17 +1,23 @@
-<ul reversed class="itemlist" style="counter-reset: start-from {{ (itemslistCounter or itemslist.length) + 1 }}">
+<ul reversed class="itemlist grid grid-cols-1 md:grid-cols-3 gap-4 pt-8" style="counter-reset: start-from {{ (itemslistCounter or itemslist.length) + 1 }}">
 
 {% for item in itemslist | reverse %}
 
-  <li class="itemlist-item{% if item.url == url %} itemlist-item-active{% endif %}">
+  <li class="pb-6 itemlist-item{% if item.url == url %} itemlist-item-active{% endif %}">
 
-    <a href="{{ item.url | url }}" class="itemlist-link">{% if item.data.title %}{{ item.data.title }}{% else %}<code>{{ item.url }}</code>{% endif %}</a>
+    <h2>
+      <a href="{{ item.url | url }}" class="itemlist-link">{% if item.data.title %}{{ item.data.title }}{% else %}<code>{{ item.url }}</code>{% endif %}</a>
+    </h2>
 
-    <time class="itemlist-date" datetime="{{ item.date | dateIso }}">{{ item.date | dateReadable }}</time>
+    <p>
+      <time class="itemlist-date" datetime="{{ item.date | dateIso }}">{{ item.date | dateReadable }}</time>
+    </p>
 
     {% for tag in item.data.tags %}
       {%- if collections.tagList.indexOf(tag) != -1 -%}
       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+
       <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
+      
       {%- endif -%}
     {% endfor %}
 

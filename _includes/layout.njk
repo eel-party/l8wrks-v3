@@ -13,7 +13,7 @@
 
 <body class="container mx-auto px-8 pt-16">
 
-    <nav class="pb-16">
+    <nav class="pb-8">
         {% set navPages = collections.all | eleventyNavigation %}
         <ul class="flex">
             {%- for entry in navPages %}
@@ -23,14 +23,18 @@
             {%- endfor %}
         </ul>
     </nav>
-    <main class="prose prose-lg max-w-full">
-        <h1>{{ title }}</h1>
-        <article>{{ content | safe }}</article>
+    <main>
+        <article>
+            <h1 class="font-bold pb-8">{{ title }}</h1>
+            <p class="leading-8">
+                {{ content | safe }}
+            </p>
+        </article>
         
     </main>
    
-    <footer class="pt-4 mt-8 border-t-2 border-black">
-        <p>All contnet BY-NC-CC {{ metadata.title }}</p>
+    <footer class="pt-8 mt-8 border-t-2 border-black">
+        <p>All content BY-NC-CC {{ metadata.title }}</p>
     </footer>
 </body>
 

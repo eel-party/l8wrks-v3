@@ -3,24 +3,42 @@ layout: layout
 ---
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-  <div>
-    <img src="/assets/{{ image }}" alt="{{ description }}" class="img" />
-  </div>
-  <div>{{ content | safe }}</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
+    <!-- left side - image -->
+    <div>
+        <img src="/assets/{{ image }}" alt="{{ description }}" class="img" />
+    </div>
+    <!-- right side - copy -->
+    <div>
+        <div class="pb-8">
+            {{ content | safe }}
+        </div>
+        <div>
+            <a href="../{{ item.parent | url }}">&larr; Back</a>
+        </div>
+    </div>
 </div>
 
-<a href="../{{ item.parent | url }}">&larr; Back</a>
 
-<h2>Tagged:</h2>
 
-<div class="">
+<div class="py-8">
+  <h2 class="pb-2">Tagged:</h2>
   {% for tag in tags %}
     {% if tag == "item" %}
     {% else %}
-      <div class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"> {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <div class="inline-flex mr-4">
+              
+
+        <!-- need to fix aligment of icon to text -->
+
+        <svg class="h-4 w-4 mr-1 align-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+
         <a href="{{ tagUrl | url }}" class="item-tag">{{ tag }}</a>
+
+        
       </div>
+        
     {% endif %}
   {% endfor %}
   
@@ -28,21 +46,21 @@ layout: layout
 
 <!-- create nextPost/previousPost, see if there is one, then see if it matches the parent category -->
 
-<h2>Pagination:</h2>
+<!-- <h2>Pagination:</h2> -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+  {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
+    
+    {% if previousPost %}
+    {% if previousPost.data.parent == parent %}
+    <div>&larr; Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></div>
+    {% endif %}
+    {% endif %}
+
     {% set nextPost = collections.item | getNextCollectionItem(page) %}
 
     {% if nextPost %}
     {% if nextPost.data.parent == parent %}
-    <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></div>{% endif %}
-    {% endif %}
-
-
-    {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
-    
-    {% if previousPost %}
-    {% if previousPost.data.parent == parent %}
-    <div>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></div>
+    <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a> &rarr;</div>
     {% endif %}
     {% endif %}
 </div>

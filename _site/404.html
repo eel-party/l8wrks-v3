@@ -1,49 +1,60 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
     <title>l∞wrks</title>
     <meta name="description" content="Portfolio">
-  </head>
-  <body>
-    <p><small style="color: red;">this is using the layout template</small></p>
-    <header>
-       
-        <ul>
-          <li>
-            <a href="/">l∞wrks</a>
-          </li>
-          <li>
-            <a href="/bookshelf/">bookshelf</a>
-          </li>
-          <li>
-            <a href="/about/">about</a>
-          </li>
-        </ul>
-    </header>
-   
-    <main>
+    <!-- <link rel="stylesheet" href="./styles/custom.css"> -->
+    <link rel="stylesheet" href="/style.css?v=1598141117388" />
+</head>
+
+<body class="container mx-auto px-8 pt-16">
+    <nav class="pb-8">
         
+        <ul class="grid grid-cols-1 md:grid-cols-5">
+            <li  class="flex-1 mr-2 mr-6">
+                <a href="/" class="text-blue-500 hover:text-blue-800">l∞wrks</a>
+            </li>
+            <li  class="flex-1 mr-2 mr-6">
+                <a href="/shows/" class="text-blue-500 hover:text-blue-800">shows</a>
+            </li>
+            <li  class="flex-1 mr-2 mr-6">
+                <a href="/paintings/" class="text-blue-500 hover:text-blue-800">paintings</a>
+            </li>
+            <li  class="flex-1 mr-2 mr-6">
+                <a href="/bookshelf/" class="text-blue-500 hover:text-blue-800">bookshelf</a>
+            </li>
+            <li  class="flex-1 mr-2 mr-6">
+                <a href="/about/" class="text-blue-500 hover:text-blue-800">about</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <article>
+            <h1 class="font-bold pb-8">404</h1>
+            <p class="leading-8">
+                
 <!-- this probably doesn't need to be an html page? -->
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oops! Not Found</title>
-  </head>
-  <body>
-    <h1>Oops! Not Found</h1>
+<article>
     <p>This is where you should tell the user how to find their content. Maybe on the <a href="/">home page?</a></p>
-  </body>
-</html>
+</article>
+    
+
+            </p>
+        </article>
     </main>
-
-    <hr>
-
-    <footer>
-      <p>All contnet BY-NC-CC l∞wrks</p>
+    <footer class="pt-4 mt-8 border-t-2 border-black">
+        <p class="float-left">Built with 11ty + Tailwind CSS</p>
+        <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text inline-flex float-right">
+            <img class="h-5 w-5 mr-1 align-text-bottom" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="Creative Commons" />
+            <img class="h-5 w-5 mr-1 align-text-bottom" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="Attribution" />
+            <img class="h-5 w-5 mr-1 align-text-bottom" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="Non-commercial" />
+            <img class="h-5 w-5 mr-2 align-text-bottom" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt="Share Alike" />
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0" alt="Creative Commons Attribution Non-commercial Share Alike 4.0 Interational">CC BY-NC-SA 4.0</a>
+        </p>
     </footer>
-  </body>
+</body>
+
 </html>

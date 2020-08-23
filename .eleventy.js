@@ -2,6 +2,8 @@ const fs = require("fs");
 
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
+const htmlmin = require("html-minifier");
+
 // require moment.js 
 const moment = require('moment');
  
@@ -9,17 +11,6 @@ moment.locale('en');
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-
-
-  // aliases arent working
-  // set layout aliases
-  // eleventyConfig.addLayoutAlias("book", "secnd-lvl.njk");
-
-  // this isn;t working
-  // eleventyConfig.addLayoutAlias("page", "layout.njk");
-
-  // Input directory: src
-  // Output directory: _site
 
   // The following copies to `_site/assets` and `_site/content`
   eleventyConfig.addPassthroughCopy("assets");
@@ -51,6 +42,34 @@ module.exports = function(eleventyConfig) {
  
   eleventyConfig.addFilter('dateReadable', date => {
     return moment(date).utc().format('MMMM, YYYY'); // E.g. May 31, 2019
+  });
+
+  // congigure tailwind.css
+  eleventyConfig.setUseGitIgnore(false);
+ 
+  eleventyConfig.addWatchTarget("./_tmp/style.css");
+ 
+  eleventyConfig.addPassthroughCopy({ "./_tmp/style.css": "./style.css" });
+ 
+  eleventyConfig.addShortcode("version", function () {
+    return String(Date.now());
+  });
+ 
+  eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
+    if (
+      process.env.ELEVENTY_PRODUCTION &&
+      outputPath &&
+      outputPath.endsWith(".html")
+    ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+ 
+    return content;
   });
 
   // Get the first `n` elements of a collection.

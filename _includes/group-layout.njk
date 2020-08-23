@@ -1,0 +1,26 @@
+---
+layout: layout
+pagination:
+  data: collections.item
+  size: 10
+  reverse: true
+  alias: items
+---
+
+{{ content | safe }}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
+    <!-- grid contents -->
+    {% for item in items | reverse %}
+    <!-- compapare the item's parent to the book's key -->
+    <!-- parent is set in the frontmatter, must match the group it belongs to  -->
+    {% if item.data.parent == eleventyNavigation.key %}
+    <div class="pb-6">
+        <a href="{{ item.url | url }}" class="link-title"><img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="h-48 w-full object-cover object-center pb-4" /></a>
+        <h2>
+            <a href="{{ item.url | url }}" class="link-title">{{ item.data.title }}</a>
+        </h2>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <!-- end grid contents -->
+</div>

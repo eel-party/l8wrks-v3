@@ -1,0 +1,25 @@
+---
+layout: layout
+pagination:
+  data: collections.group
+  size: 10
+  reverse: true
+  alias: groups
+---
+
+{{ content | safe }}
+<!-- section > group > item -->
+<!-- filter this for books/shows/paintings -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-8">
+    {% for group in groups %}
+    {% if group.data.parent == eleventyNavigation.key %}
+    <div>
+        <a href="{{ group.url | url }}"><img src="/assets/{{ group.data.image }}" alt="{{ group.data.description }}" class="img h-auto w-full object-cover object-bottom pb-4" width="200" /></a>
+        <h2>
+            <a href="{{ group.url | url }}" class="link-title">{{ group.data.title }}</a>
+        </h2>
+        <p><time datetime="{{ group.date | dateIso }}">{{ group.date | dateReadable }}</time></p>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

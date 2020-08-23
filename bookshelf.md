@@ -1,9 +1,13 @@
 ---
-layout: top-lvl
+layout: section-layout
 title: bookshelf
 eleventyNavigation: 
     key: bookshelf
+    order: 4
 ---
-# {{ title }}
 
-Tanto otaku Shibuya receding faded gang hotdog pistol order-flow stimulate bicycle weathered dome futurity-ware Chiba apophenia. Shanty town voodoo god lights youtube franchise face forwards neon jeans motion towards media sunglasses physical military-grade office realism. Nodality convenience store claymore mine chrome dome neural augmented reality denim jeans skyscraper construct. 
+An incomplete record of a lifetime of sketchbooks (well, more like the 10 years or so of books I have with me). Books are titled with a description of the cover.
+
+There was a period of time when I refused to put stickers or any external markings on my sketchbooks. In this case they will have another descriptor added.
+
+They are listed in reverse chronological order.

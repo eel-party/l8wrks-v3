@@ -1,11 +1,28 @@
 ---
 layout: layout
 ---
+<!-- create nextPost/previousPost, see if there is one, then see if it matches the parent category -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-8 ">
+    {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
+    {% if previousPost %}
+    {% if previousPost.data.parent == parent %}
+    <div>&larr; Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></div>
+    {% endif %}
+    {% endif %}
+
+    {% set nextPost = collections.item | getNextCollectionItem(page) %}
+    {% if nextPost %}
+    {% if nextPost.data.parent == parent %}
+    <!-- figure out how to keep this in the 2nd column, then add text-right-->
+    <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a> &rarr;</div>
+    {% endif %}
+    {% endif %}
+</div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
     <!-- left side - image -->
     <div>
-        <img src="/assets/{{ image }}" alt="{{ description }}" class="img" />
+        <img src="/assets/{{ image }}" alt="{{ description }}" class="img lazy-test" />
     </div>
     <!-- right side - copy -->
     <div>
@@ -30,20 +47,4 @@ layout: layout
     </div>
     {% endif %}
     {% endfor %}
-</div>
-<!-- create nextPost/previousPost, see if there is one, then see if it matches the parent category -->
-<!-- <h2>Pagination:</h2> -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-    {% set previousPost = collections.item | getPreviousCollectionItem(page) %}
-    {% if previousPost %}
-    {% if previousPost.data.parent == parent %}
-    <div>&larr; Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></div>
-    {% endif %}
-    {% endif %}
-    {% set nextPost = collections.item | getNextCollectionItem(page) %}
-    {% if nextPost %}
-    {% if nextPost.data.parent == parent %}
-    <div>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a> &rarr;</div>
-    {% endif %}
-    {% endif %}
 </div>

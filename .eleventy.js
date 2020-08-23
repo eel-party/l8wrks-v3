@@ -6,9 +6,21 @@ const htmlmin = require("html-minifier");
 
 // require moment.js 
 const moment = require('moment');
- 
 moment.locale('en');
 
+// lazy load images - this isn;t working
+const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
+
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(lazyImagesPlugin, {
+  // custom image selector
+  imgSelector: '.lazy-test img', 
+  // don't cache results to a file
+  // cacheFile: '', 
+});
+};
+
+//nav config
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 

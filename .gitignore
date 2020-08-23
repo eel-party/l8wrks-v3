@@ -27,12 +27,12 @@ nbproject
 sftp-config.json
 
 # Dreamweaver added files
-_notes
-dwsync.xml
+# _notes
+# dwsync.xml
 
 # Komodo
-*.komodoproject
-.komodotools
+# *.komodoproject
+# .komodotools
 
 # Folders to ignore
 .hg
@@ -41,9 +41,9 @@ dwsync.xml
 intermediate
 publish
 .idea
-node_modules
-_site
-assets
+node_modules/
+_site/
+assets/
 
 # build script local files
 build/buildinfo.properties

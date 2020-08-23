@@ -1,9 +1,9 @@
 {
-  "title": "l∞wrks",
+  "title": "l8wrks",
   "url": "https://latewerks.com/",
   "description": "Portfolio",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "portolfio and assorted notes",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://latewerks.com/"

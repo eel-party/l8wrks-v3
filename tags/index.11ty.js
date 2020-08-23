@@ -28,6 +28,7 @@ class Toast {
     `);
     });
 
+// need to add styling here or figure out how to use this in tags-list.njk
     return `
     <ol>
       ${tagsList.join('')}

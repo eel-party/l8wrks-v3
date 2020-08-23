@@ -1,9 +1,13 @@
 ---
 layout: layout
-title: l∞wrks
+title: l8wrks
 eleventyNavigation: 
-    key: l∞wrks
+    key: l8wrks
     order: 1
 ---
 
-Tanto otaku Shibuya receding faded gang hotdog pistol order-flow stimulate bicycle weathered dome futurity-ware Chiba apophenia. Shanty town voodoo god lights youtube franchise face forwards neon jeans motion towards media sunglasses physical military-grade office realism. Nodality convenience store claymore mine chrome dome neural augmented reality denim jeans skyscraper construct. 
+is the internet home of the work of Lee Ely, a Brooklyn-based artist. Browse the bookshelf to see sketchbook pages, or take a look at recent/upcoming shows.
+
+# featured
+
+here is where we feature something

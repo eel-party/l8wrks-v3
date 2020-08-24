@@ -9,16 +9,7 @@ const moment = require('moment');
 moment.locale('en');
 
 // lazy load images - this isn;t working
-const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
-
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(lazyImagesPlugin, {
-  // custom image selector
-  imgSelector: '.lazy-test img', 
-  // don't cache results to a file
-  // cacheFile: '', 
-});
-};
+// const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 //nav config
 module.exports = function(eleventyConfig) {
@@ -27,7 +18,19 @@ module.exports = function(eleventyConfig) {
   // The following copies to `_site/assets` and `_site/content`
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("content");
+
   // remember to add passthrough for css once we have some
+  module.exports = function(eleventyConfig) {
+  eleventyConfig.setTemplateFormats([
+    "md",
+    "css",
+    "11ty.js"
+  ]);
+
+  // eleventyConfig.addPlugin(lazyImagesPlugin);
+
+};
+
 
   // handle 404 page
   eleventyConfig.setBrowserSyncConfig({
@@ -104,10 +107,9 @@ module.exports = function(eleventyConfig) {
             // this list should match the `filter` list in tags.njk
             case "all":
             case "nav":
-            case "page":
-            case "pages":
-            case "book":
-            case "books":
+            case "item":
+            case "group":
+            case "tagList":
               return false;
           }
 

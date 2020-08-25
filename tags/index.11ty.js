@@ -1,39 +1,43 @@
-class Toast {
-  data() {
-    return {
-      title: 'Toast',
-      layout: 'layout',
-      pagination: {
-        data: 'collections',
-        size: 10000,
-        alias: 'toast',
-        filter: ['all', 'nav', 'book','item', 'group', 'tagList'],
-      },
-      permalink: '/toast/',
-    };
-  }
+class tags {
+    data() {
+        return {
+            title: 'tags',
+            layout: 'layout',
+            pagination: {
+                data: 'collections',
+                size: 10000,
+                alias: 'tags',
+                filter: ['all', 'nav', 'item', 'group', 'book', 'show','tagList'],
+            },
+            permalink: '/tags/',
+        };
+    }
 
-  render({ toast, collections }) {
-    let tagsList = [];
-    toast.forEach((tag) => {
-      tagsList.push(`
+    render({ tags, collections }) {
+        let tagsList = [];
+        tags.forEach((tag) => {
+            tagsList.push(`
       <li>
-        <p>
-          <a href="/tags/${this.slug(tag)}/">${tag}</a>: ${
+          <div class="inline-flex mr-3">
+            <svg class="h-4 w-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" /></svg>
+            <a class="item-tag h-4" href="/tags/${this.slug(tag)}/">${tag}</a>: ${
         collections[tag].length
       }
           ${tag.description ? tag.description : ''}
         </p>
+        </div>
+        
+          
       </li>
     `);
-    });
+        });
 
-// need to add styling here or figure out how to use this in tags-list.njk
-    return `
-    <ol>
+        return `
+    <ol class="inline-flex mr-3">
       ${tagsList.join('')}
     </ol>
   `;
-  }
+    }
 }
-module.exports = Toast;
+module.exports = tags;

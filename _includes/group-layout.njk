@@ -15,8 +15,11 @@ pagination:
     <!-- parent is set in the frontmatter, must match the group it belongs to  -->
     {% if item.data.parent == eleventyNavigation.key %}
     <div class="pb-6">
-        <a href="{{ item.url | url }}" class="link-title"><img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="h-48 w-full object-cover object-center pb-4" /></a>
-        <h2>
+      <div class="h-64 overflow-hidden">
+        <a href="{{ item.url | url }}" class="link-title"><img src="/assets/{{ item.data.image }}" alt="{{ item.data.description }}" class="object-cover object-center" /></a>
+      </div>
+        
+        <h2 class="pt-4">
             <a href="{{ item.url | url }}" class="link-title">{{ item.data.title }}</a>
         </h2>
     </div>

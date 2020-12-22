@@ -5,7 +5,7 @@ date: 2020-07-31
 tags: 
     - group
     - show
-image: IMG_20200201_0002.jpg
+image: sleepDebtor.jpg
 description: this is a description of the image to be used in the alt tag
 parent: shows
 permalink: "shows/{{ title | slug }}/"

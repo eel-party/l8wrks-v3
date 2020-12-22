@@ -1,9 +1,7 @@
 ---
 layout: section-layout
 title: bookshelf
-eleventyNavigation: 
-    key: bookshelf
-    order: 4
+
 ---
 
 An incomplete record of a lifetime of sketchbooks (well, more like the 10 years or so of books I have with me). Books are titled with a description of the cover.
